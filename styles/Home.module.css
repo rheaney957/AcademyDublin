@@ -10,10 +10,8 @@
   flex: 1;
   display: block;
 }
+
 @media (max-width: 520px) {
-  .main {
-    margin-bottom: 310px !important;
-  }
   .container {
     padding: 0 1.5rem;
   }
@@ -44,13 +42,6 @@
     grid-template-columns: repeat(2, 1fr);
     align-self: auto;
   }
-  .backMobile {
-    display: block;
-    font-size: 30px;
-    position: absolute;
-    left: 30px !important;
-    top: 50px !important;
-  }
 }
 
 .shineLogo {
@@ -68,7 +59,7 @@
 }
 
 .socialsList li a {
-  color: #e50914;
+  color: white;
   font-size: 24px;
   padding: 0 10px;
 }
@@ -92,16 +83,16 @@
 /* Footer  */
 .footer {
   width: 100%;
+  position: relative;
+  z-index: 10;
 }
 .footerDetails {
   width: 100%;
+  position: relative;
+  z-index: 10;
 }
 
 .footerMobile {
-  display: none;
-}
-
-.backMobile {
   display: none;
 }
 
@@ -110,28 +101,10 @@
     margin-right: 25px;
   }
   .shineLogo img {
-    /* margin-right: 35px; */
     position: relative;
     right: -26px;
     top: -3px;
     z-index: 10;
-  }
-  .main {
-    display: block;
-  }
-
-  .mainMobile {
-    display: none;
-  }
-
-  .backMobile {
-    display: block;
-    color: white;
-    font-size: 30px;
-    z-index: 100;
-    position: absolute;
-    left: 30px;
-    top: 40px;
   }
 }
 
@@ -199,6 +172,7 @@
 .footerLinks {
   grid-area: 1 / 1 / 2 / 2;
   position: relative;
+  z-index: 10;
 }
 .footerMailing {
   grid-area: 1 / 2 / 2 / 4;

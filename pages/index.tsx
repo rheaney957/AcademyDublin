@@ -1,5 +1,6 @@
 import styles from '../styles/Home.module.css'
 import NavBar from '../components/NavBar'
+import MobileMenu from '../components/MobileMenu'
 import Breadcrumbs from '../components/Breadcrumbs'
 import Layout from '../components/Layout'
 import Header from '../components/Header'
@@ -26,19 +27,19 @@ export interface ResponseData
 }
 
 export interface AllShowsProps {
-  menu: boolean;
-  setMenu: React.Dispatch<React.SetStateAction<boolean>>;
   SSRdata: ResponseData;
 }
 
-export default function AllShows({menu, setMenu, SSRdata}:AllShowsProps)
+export default function AllShows({ SSRdata }: AllShowsProps)
 {
   const [events, setEvents] = useState<ResponseData>(SSRdata);
   const [venueCloudId, setVenueCloudId] = useState(21);
   const [isLoading, setIsLoading] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     fetchEvents();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [venueCloudId]);
 
   const fetchEvents = async () => {
@@ -57,11 +58,14 @@ export default function AllShows({menu, setMenu, SSRdata}:AllShowsProps)
 
   return (
     <div className={styles.container}>
-      {!menu && <div className={styles.backMobile} onClick={()=> setMenu(true)}><i className="fa-solid fa-arrow-left"></i> </div>}
+      <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
       <Header route='All Shows'/>
-      <NavBar menu={menu} setMenu={setMenu}/>
+      <NavBar
+        isMobileMenuOpen={isMobileMenuOpen}
+        onMobileMenuToggle={() => setIsMobileMenuOpen(true)}
+      />
       <Breadcrumbs />
-      <main className={!menu ? styles.main : styles.mainMobile}>
+      <main className={styles.main}>
         <Layout title='All Shows' data={gigs}>
           {(!isLoading && gigs instanceof Array) && gigs?.map((event: any, index: number) => (
             <Card
@@ -80,7 +84,7 @@ export default function AllShows({menu, setMenu, SSRdata}:AllShowsProps)
           ))}
         </Layout>
       </main>
-      <Footer menu={menu}/>
+      <Footer />
     </div>
   )
 }

@@ -1,0 +1,145 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #101413;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  overflow-y: auto;
+}
+
+.overlayOpen {
+  opacity: 1;
+  visibility: visible;
+}
+
+.backButton {
+  position: absolute;
+  top: 40px;
+  left: 30px;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 10000;
+  transition: transform 0.2s ease;
+}
+
+.backButton:hover {
+  transform: translateX(-5px);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 100px;
+  z-index: 10001;
+}
+
+.logo {
+  margin-bottom: 20px;
+}
+
+.logo img {
+  width: 200px;
+  height: auto;
+}
+
+.socials {
+  margin-bottom: 30px;
+}
+
+.socialsList {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+}
+
+.socialsList li a {
+  color: white;
+  font-size: 24px;
+  transition: color 0.3s ease;
+}
+
+.socialsList li a:hover {
+  color: #ffffff4d;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+  z-index: 10001;
+}
+
+.navMenu {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  position: relative;
+  z-index: 10001;
+}
+
+.navItem {
+  border-bottom: 3px solid #1e90ff;
+  color: #1e90ff;
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+  padding: 20px;
+  min-width: max-content;
+  transition: background-color 0.3s ease;
+  position: relative;
+  z-index: 10001;
+}
+
+.navItem:first-of-type {
+  border-top: 3px solid #1e90ff;
+}
+
+.navItem a {
+  text-decoration: none;
+  color: #1e90ff;
+  cursor: pointer;
+  display: block;
+}
+
+.navItem:hover {
+  background-color: rgba(30, 144, 255, 0.1);
+}
+
+.navItemActive {
+  background-color: rgba(30, 144, 255, 0.2);
+}
+
+.navFooter {
+  position: relative;
+  margin-top: 100px;
+  padding: 0 40px 40px 40px;
+  z-index: 10000;
+}
+
+/* Only show on mobile */
+@media screen and (min-width: 481px) {
+  .overlay {
+    display: none;
+  }
+}

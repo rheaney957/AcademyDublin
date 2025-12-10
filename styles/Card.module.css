@@ -73,7 +73,7 @@
 .cardTitle {
   align-items: center;
   display: flex;
-  color: #e50914;
+  color: #1e90ff;
   font-size: 14px;
 }
 .cardInfoName {
@@ -93,7 +93,7 @@
 .cardInfoLocation {
   display: block;
   margin-top: 4px;
-  color: #e50914;
+  color: #1e90ff;
   line-height: 1.3;
   font-size: 16px;
 }
@@ -156,11 +156,11 @@
 
 @media (max-width: 780px) {
   .featuredCardContainer {
-    height: 200px;
+    height: auto;
   }
   .featuredCardContainer img {
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important;
   }
 }
 

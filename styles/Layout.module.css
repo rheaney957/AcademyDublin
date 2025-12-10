@@ -179,13 +179,15 @@
 }
 @media (max-width: 520px) {
   .cardsFeatured {
-    max-height: 80vh;
-    min-height: 50vh;
+    max-height: none;
+    min-height: auto;
     border-radius: 4px;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, 1fr);
-    grid-column-gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 1;
   }
 }
 

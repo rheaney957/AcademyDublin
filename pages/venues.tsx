@@ -1,27 +1,27 @@
 /* eslint-disable react/no-unescaped-entities */
 import styles from '../styles/Home.module.css'
 import NavBar from '../components/NavBar'
+import MobileMenu from '../components/MobileMenu'
 import Breadcrumbs from '../components/Breadcrumbs'
 import Layout from '../components/Layout'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-export interface VenuesProps {
-  menu: boolean;
-  setMenu: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import React, { useState } from 'react'
 
-
-export default function Venues({menu, setMenu}: VenuesProps)
+export default function Venues()
 {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <div className={styles.container}>
-      {!menu && <div className={styles.backMobile} onClick={()=> setMenu(true)}><i className="fa-solid fa-arrow-left"></i> </div>}
-     <Header route='Venues'/>
-
-      <NavBar menu={menu} setMenu={setMenu}/>
+      <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
+      <Header route='Venues'/>
+      <NavBar
+        isMobileMenuOpen={isMobileMenuOpen}
+        onMobileMenuToggle={() => setIsMobileMenuOpen(true)}
+      />
       <Breadcrumbs />
-
-      <main className={!menu ? styles.main : styles.mainMobile}>
+      <main className={styles.main}>
         <Layout title="Venues" FAQs={true}>
           <section className={styles.venues}>
             <h2>Venues</h2>
@@ -35,8 +35,7 @@ export default function Venues({menu, setMenu}: VenuesProps)
             </section>
             </Layout>
         </main>
-
-      <Footer menu={menu}/>
+      <Footer />
     </div>
   )
 }

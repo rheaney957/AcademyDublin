@@ -1,21 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "../styles/globals.css";
-import bg from "../public/images/background.jpg";
 
 import type { AppProps } from "next/app";
 
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [menu, setMenu] = React.useState(true);
-
-  React.useEffect(() => {}, [menu]);
-
   return (
     <>
       <div style={{
-        backgroundImage: `url(${bg.src})`,
-        backgroundRepeat: 'no-repeat',
+        background: 'linear-gradient(135deg, #0a1929 0%, #1a2f4a 50%, #2a4d6e 100%)',
         minHeight: '100vh',
         width: '100%',
         position: 'fixed',
@@ -23,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
         left: 0,
         zIndex: -1
       }} />
-      <Component menu={menu} setMenu={setMenu} {...pageProps} />
+      <Component {...pageProps} />
     </>
   );
 }

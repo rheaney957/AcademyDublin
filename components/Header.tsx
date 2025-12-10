@@ -2,7 +2,7 @@
 
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import Logo from '/public/images/logo.png'
+import Logo from '/public/images/ac-logo.png'
 import Link from 'next/link';
 export interface HeadProps {
   route: string;

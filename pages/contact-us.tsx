@@ -1,33 +1,38 @@
-
 import styles from '../styles/Home.module.css'
 import NavBar from '../components/NavBar'
+import MobileMenu from '../components/MobileMenu'
 import Breadcrumbs from '../components/Breadcrumbs'
 import Layout from '../components/Layout'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import ContactUsForm from '../components/ContactUsForm'
+import React, { useState } from 'react'
+
 export interface ContactUsProps {
-  menu: boolean;
-  setMenu: React.Dispatch<React.SetStateAction<boolean>>;
   SSRdata: any;
 }
 
-export default function ContactUs({menu, setMenu, SSRdata}: ContactUsProps)
+export default function ContactUs({ SSRdata }: ContactUsProps)
 {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <div className={styles.container}>
-      {!menu && <div className={styles.backMobile} onClick={()=> setMenu(true)}><i className="fa-solid fa-arrow-left"></i> </div>}
-     <Header route='Contact Us'/>
-      <NavBar menu={menu} setMenu={setMenu}/>
+      <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
+      <Header route='Contact Us'/>
+      <NavBar
+        isMobileMenuOpen={isMobileMenuOpen}
+        onMobileMenuToggle={() => setIsMobileMenuOpen(true)}
+      />
       <Breadcrumbs />
-      <main className={!menu ? styles.main : styles.mainMobile}>
-        <Layout title="Contact Us">
+      <main className={styles.main}>
+        <Layout title="Contact Us"  FAQs={true}>
           <section className={styles.contact}>
             <ContactUsForm/>
           </section>
         </Layout>
         </main>
-        <Footer menu={menu}/>
+        <Footer />
     </div>
   )
 }

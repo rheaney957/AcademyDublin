@@ -5,16 +5,11 @@ import buttonStyles from '../styles/Button.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 
-export interface FooterProps
-{
-  menu?: boolean;
-}
-
-export default function Footer(props: FooterProps)
+export default function Footer()
 {
   const router = useRouter();
   return (
-    <footer className={`${styles.footer} ${props.menu && styles.footerMobile}`} >
+    <footer className={styles.footer}>
       <div className={styles.footerDetails}>
         <div className={styles.footerLinks}>
           <ul className={styles.footerRoutes}>

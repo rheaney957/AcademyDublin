@@ -3,59 +3,53 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from '../styles/NavBar.module.css';
 import { SetStateAction } from 'react';
-import Footer from './Footer';
 
 export interface NavBarProps {
-    menu: boolean;
-    setMenu: React.Dispatch<SetStateAction<boolean>>;
+    isMobileMenuOpen: boolean;
+    onMobileMenuToggle: () => void;
 }
 
-export default function NavBar({menu, setMenu}: NavBarProps)
-{
-
-    const [click, setClick] = React.useState(false);
+export default function NavBar({ isMobileMenuOpen, onMobileMenuToggle }: NavBarProps) {
     const router = useRouter();
 
-    const handleClick = () => setClick(!click);
-    const Close = () => setClick(false);
-
     return (
-        <div>
-            <div className={menu ? styles.mainContainer :  styles.mainContainerMobile} onClick={() => Close()} />
-            <nav className={styles.navbar} onClick={e => e.stopPropagation()}>
-             <div className={menu ? styles.navContainer :  styles.navContainerMobile}>
+        <div className={styles.navbarWrapper}>
+            {/* Mobile menu button */}
+            <button
+                className={styles.mobileMenuButton}
+                onClick={onMobileMenuToggle}
+                aria-label="Open menu"
+            >
+                <i className="fa-solid fa-bars"></i>
+            </button>
+
+            {/* Desktop navigation */}
+            <nav className={styles.navbar}>
+                <div className={styles.navContainer}>
                     <ul className={styles.navMenu}>
-                        <li className={styles.navItem} onClick={() => setMenu(false)}>
-                            <Link
-                                legacyBehavior
-                                href="./"
-                                className={styles.active}
-                            >
+                        <li className={styles.navItem}>
+                            <Link href="/">
                                 Live Shows
                             </Link>
                         </li>
-                        <li className={styles.navItem} onClick={() => setMenu(false)}>
-                            <Link
-                                legacyBehavior
-                                href="./venues"
-                                className={router.pathname == "/" ? (styles.navLinks, styles.active) : styles.navLinks}
-                            >
+                        <li className={styles.navItem}>
+                            <Link href="/venues">
                                 Venues
                             </Link>
                         </li>
-                        <li className={styles.navItem} onClick={() => setMenu(false)}>
-                            <Link
-                                legacyBehavior
-                                href="./contact-us"
-                                className={router.pathname == "/" ? (styles.navLinks, styles.active) : styles.navLinks}
-                            >
+                        <li className={styles.navItem}>
+                            <Link href="/help-and-FAQs">
+                                FAQs
+                            </Link>
+                        </li>
+                        <li className={styles.navItem}>
+                            <Link href="/contact-us">
                                 Contact Us
                             </Link>
                         </li>
                     </ul>
                 </div>
-            </nav >
-            {menu && <div className={styles.navFooter}><Footer /></div>}
-        </ div >
+            </nav>
+        </div>
     );
 }

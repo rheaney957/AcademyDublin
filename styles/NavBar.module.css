@@ -1,3 +1,10 @@
+/* Wrapper for navbar and mobile button */
+.navbarWrapper {
+  position: relative;
+  z-index: 20;
+}
+
+/* Desktop navbar - visible by default */
 .navbar {
   background-color: #232222;
   height: 70px;
@@ -9,40 +16,15 @@
   top: 0;
   z-index: 20;
   border-radius: 2px;
-  display: block;
-}
-.navFooter {
-  display: none;
 }
 
-.navContainer,
-.navContainerMobile {
+.navContainer {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
   height: 70px;
   max-width: 1500px;
-  z-index: 2;
-}
-
-.mainContainer {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: -1;
-}
-
-.navLogo {
-  color: #666;
-  align-items: center;
-  margin-left: 20px;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 2rem;
-  flex-grow: 1;
 }
 
 .navMenu {
@@ -51,17 +33,7 @@
   text-align: center;
   margin-right: 2rem;
   padding-left: 0;
-}
-
-.navLinks {
-  color: #232222;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  height: 100%;
-  border-bottom: 3px solid transparent;
-}
-.fa-code {
-  margin-left: 1rem;
+  margin: 0;
 }
 
 .navItem {
@@ -72,12 +44,14 @@
   padding: 0 45px;
   color: #fff;
 }
+
 .navItem:last-of-type {
   border: none;
 }
 
 .navItem a {
   text-decoration: none;
+  color: #fff;
 }
 
 .navItem:after {
@@ -91,21 +65,31 @@
 
 .navItem:hover:after {
   width: 100%;
-  background: #e50914;
+  background: #1e90ff;
 }
 
-.navItem .active {
-  color: #ccc;
-}
-
-.navIcon {
+/* Mobile menu button - hidden by default */
+.mobileMenuButton {
   display: none;
+  position: absolute;
+  top: -100px;
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 42px;
+  cursor: pointer;
+  z-index: 9998;
+  padding: 0;
+  transition: color 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.activeIcon {
-  visibility: hidden;
+.mobileMenuButton:hover,
+.mobileMenuButton:active {
+  color: #1e90ff;
 }
 
+/* Responsive breakpoints */
 @media screen and (max-width: 1200px) {
   .navItem {
     font-size: 16px;
@@ -119,6 +103,7 @@
     padding: 0 14px;
   }
 }
+
 @media screen and (max-width: 850px) {
   .navItem {
     font-size: 12px;
@@ -126,7 +111,7 @@
   }
 }
 
-@media only screen and (max-width: 650px) and (min-width: 480px) {
+@media only screen and (max-width: 650px) and (min-width: 481px) {
   .navMenu {
     margin-right: 0;
   }
@@ -136,116 +121,13 @@
   }
 }
 
+/* Mobile view - hide desktop nav, show mobile button */
 @media screen and (max-width: 480px) {
   .navbar {
-    background-color: none;
-    height: 0;
-    position: static;
-  }
-  .navContainerMobile {
-    display: none;
-    background-color: transparent;
-  }
-
-  .activeIcon {
-    color: #ccc;
-    display: block;
-    visibility: visible;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-100%, 60%);
-    font-size: 42px;
-    cursor: pointer;
-    padding-top: 12px;
-    padding-right: 5px;
-    transition: visibility 0.2s ease-in-out;
-  }
-
-  .mainContainer {
-    background-color: #101413;
-    z-index: 1;
-    position: fixed;
-    height: 120vh;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .mainContainerMobile {
-    background-color: unset;
-  }
-
-  .navContainer {
-    position: relative;
-    top: 40px;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-  }
-  .navContainer {
-    justify-content: center;
-  }
-
-  .navItem {
-    border: none !important;
-    color: #e50914;
-    list-style-type: none;
-    font-size: 24px;
-    position: relative;
-    top: 150px;
-    border-bottom: 3px solid #e50914 !important;
-    font-weight: 500;
-    text-align: center;
-    padding: 10px 20px;
-    min-width: max-content;
-  }
-
-  .navItem a {
-    /* padding: 15px 80px; */
-    max-width: 350px;
-  }
-
-  .navItem:first-of-type {
-    border-top: 3px solid #e50914 !important;
-  }
-  .navItem:hover:after {
     display: none;
   }
 
-  .navMenu {
-    display: flex;
-    flex-direction: column;
-    top: 80px;
-    left: -110%;
-    opacity: 1;
-    transition: all 0.3s ease;
-    width: 100%;
-    margin: 0;
-  }
-
-  .navMenu .active {
-    background: #ccc;
-    left: 0px;
-    opacity: 1;
-    z-index: 1;
-    transition: opacity 0.3s ease-in-out;
-  }
-
-  .navLinks {
-    padding: 1.5rem;
-    width: 100%;
-    display: table;
-  }
-  .navFooter {
-    left: 0;
+  .mobileMenuButton {
     display: block;
-    position: absolute;
-    top: 100vh;
-    bottom: 0;
-    z-index: 20;
-    margin: 40px;
   }
 }

@@ -1,5 +1,5 @@
 /* FAQs */
-  
+
 .question {
     color: #06494f;
     padding: 20px 20px 20px 0;
@@ -26,19 +26,19 @@
   .question.active {
     font-weight: 700;
   }
-  
+
   .question.active i {
     transform: rotate(180deg);
   }
-  
+
   @media only screen and (max-width: 767px) {
     .question {
       padding-right: 50px;
     }
   }
-  
+
   .answer {
-    padding: 40px !important;
+    padding: 30px !important;
     border-bottom: 2px solid #06494f;
     display: none;
     margin: 0 25px;
