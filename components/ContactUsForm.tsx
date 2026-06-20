@@ -24,7 +24,7 @@ export default function ContactUsForm()
     <form action="location.php" method="post" className={styles.form}>
       {!submit ?
         <>
-          <p>If you have any questions regarding Shine please use the form below. We will be
+          <p>If you have any questions regarding The Academy please use the form below. We will be
             in touch with you as soon as we can.</p>
           <div><label>
             <input name="name" type="text" placeholder="Full Name *" required onChange={(e) => handleChange('name', (e.target.value).toString())} />
